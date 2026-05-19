@@ -53,7 +53,7 @@ public class BookingService {
             return;
         }
 
-        // DOUBLE BOOKING CHECK
+        // check double booking
 
         for (Booking b : DataStore.bookings) {
 
