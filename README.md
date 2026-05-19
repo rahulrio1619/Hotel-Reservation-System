@@ -1,54 +1,38 @@
-# Hotel Reservation System
+# Distributed Hotel Reservation System
 
-A lightweight, console-based Java application designed to manage hotel bookings, room availability, and generate reports. This application demonstrates core Object-Oriented Programming (OOP) principles, clean service-oriented architecture, and robust console-based user interaction.
+## Business Context
+A hotel chain needs a system to manage room availability, bookings, cancellations, and pricing across multiple locations.
 
-## Features
+## Design Objective
 
-- **Hotel Management**: Easily register and view hotels.
-- **Room Management**: Add rooms to specific hotels and track room details (room number, type, price, and status).
-- **Booking Workflow**:
-  - Book a room for a specific customer with checking for room availability.
-  - Cancel existing bookings.
-  - View all active bookings.
-- **Reports**: View occupancy rates, revenue statistics, and reservation summaries.
+Create a system to:
+•	Manage hotels and rooms 
+•	Book/cancel rooms 
+•	Handle dynamic pricing based on occupancy 
+•	Prevent double booking 
+•	Generate occupancy reports 
 
-## Project Structure
+## Main Flows
+•	Hotel/Room management 
+•	Customer booking 
+•	Room allocation engine 
+•	Cancellation handling 
+•	Pricing updates 
 
-```text
-src/
-├── entity/
-│   ├── Booking.java
-│   ├── Customer.java
-│   ├── Hotel.java
-│   ├── Room.java
-│   └── RoomType.java
-├── service/
-│   ├── BookingService.java
-│   ├── HotelService.java
-│   ├── PricingService.java
-│   ├── ReportService.java
-│   └── RoomService.java
-├── util/
-│   └── DataStore.java
-└── Main.java
-```
+## Business Rules
+•	A room cannot be booked by multiple customers for same date range 
+•	Price increases when occupancy > threshold 
+•	Refund rules apply on cancellation timing 
 
-## How to Run
+## Constraints
+•	Date range validation is mandatory 
+•	Booking must be atomic (no partial booking) 
+•	Room type must match request 
 
-### Prerequisites
-- Java Development Kit (JDK) 8 or higher.
-- A terminal or IDE (like IntelliJ IDEA or Eclipse).
+## Storage
+•	In-memory + calendar-based availability map 
+## SQL Use Case
+Find hotels with highest occupancy rate and revenue per room type.
+## Final Output
+<img width="960" height="540" alt="FullStackAssessmentFinalSQLOutput" src="https://github.com/user-attachments/assets/4230c23b-c505-4895-aa97-1707a0dc5f19" />
 
-### Compile and Run via Terminal
-1. Open your terminal in the project root directory.
-2. Compile all java files:
-   ```bash
-   javac -d bin src/**/*.java src/*.java
-   ```
-3. Run the application:
-   ```bash
-   java -cp bin Main
-   ```
-
----
-*Created as part of the Hotel Reservation System project.*
