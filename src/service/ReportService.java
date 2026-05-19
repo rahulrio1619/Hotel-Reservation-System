@@ -36,7 +36,7 @@ public class ReportService {
         System.out.printf("%-10s | %-12s | %-30s | %-10s\n", "Hotel ID", "Room Type", "Occupancy (Booking Count)", "Revenue");
         System.out.println("-------------------------------------------------------------------------");
 
-        // Grouping logic: Key = hotelId + "_" + roomType
+        
         java.util.Map<String, HotelRoomTypeStats> statsMap = new java.util.HashMap<>();
 
         for (Booking b : DataStore.bookings) {
@@ -61,7 +61,7 @@ public class ReportService {
         }
 
         java.util.List<HotelRoomTypeStats> statsList = new java.util.ArrayList<>(statsMap.values());
-        statsList.sort((s1, s2) -> Integer.compare(s2.bookingCount, s1.bookingCount)); // Sort DESC by bookingCount
+        statsList.sort((s1, s2) -> Integer.compare(s2.bookingCount, s1.bookingCount)); 
 
         if (statsList.isEmpty()) {
             System.out.println("No booking data available.");
