@@ -33,6 +33,16 @@ Create a system to:
 •	In-memory + calendar-based availability map 
 ## SQL Use Case
 Find hotels with highest occupancy rate and revenue per room type.
+
+## SQL Query
+```
+SELECT r.hotel_id, r.room_type, COUNT(b.booking_id) AS booking_count, SUM(b.total_price) AS total_revenue
+FROM bookings b
+JOIN rooms r ON b.room_id = r.room_id
+GROUP BY r.hotel_id, r.room_type
+ORDER BY booking_count DESC;
+```
+
 ## Final Output
 <img width="960" height="540" alt="FullStackAssessmentFinalSQLOutput" src="https://github.com/user-attachments/assets/4230c23b-c505-4895-aa97-1707a0dc5f19" />
 
